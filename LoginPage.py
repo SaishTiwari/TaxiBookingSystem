@@ -29,11 +29,11 @@ def authenticate_user(master):
             user_role, user_id, db_username, db_password = user
             if password == db_password:  # In production, you should hash the password and compare hashes
                 if user_role == "Customer":
-                    CustomerDashboard(root=master)
+                    CustomerDashboard(master = master, user_id=user_id)
                 elif user_role == "Driver":
-                    DriverDashboard(user_id)
+                    DriverDashboard(master = master, user_id=user_id)
                 elif user_role == "Admin":
-                    AdminDashboard()
+                    AdminDashboard(master=master)
                 else:
                     messagebox.showerror("Login Error", "Unknown user role!")
             else:
